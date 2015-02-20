@@ -573,4 +573,4 @@ def main():
     if options.output:
         srs.save_csv(options.output)
     srs.publish_results(submission_reddit, options.submitters,
-                        options.commenters, 5, 5, options.top, options.debug)
+                        options.commenters, 10, 10, options.top, options.debug)
