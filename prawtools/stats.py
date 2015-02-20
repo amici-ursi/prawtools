@@ -18,7 +18,7 @@ from . import __version__
 from .helpers import arg_parser
 
 DAYS_IN_SECONDS = 60 * 60 * 24
-MAX_BODY_SIZE = 10000
+MAX_BODY_SIZE = 15000
 
 
 def safe_title(submission):
@@ -491,8 +491,14 @@ def main():
     parser.add_option('-s', '--submitters', type='int', default=5,
                       help='Number of top submitters to display '
                       '[default %default]')
+    parser.add_option('-q', '--topsubmissions', type='int', default=10,
+                      help='Number of top submittions to display '
+                      '[default %default]')
     parser.add_option('-c', '--commenters', type='int', default=10,
                       help='Number of top commenters to display '
+                      '[default %default]')
+    parser.add_option('-w', '--topcomments', type='int', default=10,
+                      help='Number of top comments to display '
                       '[default %default]')
     parser.add_option('-a', '--after',
                       help='Submission ID to fetch after')
@@ -573,4 +579,4 @@ def main():
     if options.output:
         srs.save_csv(options.output)
     srs.publish_results(submission_reddit, options.submitters,
-                        options.commenters, 10, 10, options.top, options.debug)
+                        options.commenters, options.topsubmissions, options.topcomments, options.top, options.debug)
