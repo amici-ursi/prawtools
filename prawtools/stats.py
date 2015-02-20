@@ -50,9 +50,9 @@ class SubRedditStats(object):
     def _permalink(permalink):
         tokens = permalink.split('/')
         if tokens[8] == '':  # submission
-            return tt('/comments/{0}/_/').format(tokens[6])
+            return tt('/{0}').format(tokens[6])
         else:  # comment
-            return tt('/comments/{0}/_/{1}?context=1').format(tokens[6],
+            return tt('/comments/{0}/_/{1}?context=999').format(tokens[6],
                                                               tokens[8])
 
     @staticmethod
@@ -65,7 +65,7 @@ class SubRedditStats(object):
             return '_deleted_'
         elif isinstance(user, Redditor):
             user = str(user)
-        return tt('[{0}](/user/{1})').format(user.replace('_', r'\_'), user)
+        return tt('/u/{1}').format(user.replace('_', r'\_'), user)
 
     @staticmethod
     def _submit(func, *args, **kwargs):
