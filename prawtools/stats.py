@@ -65,7 +65,7 @@ class SubRedditStats(object):
             return '_deleted_'
         elif isinstance(user, Redditor):
             user = str(user)
-        return tt('u/{1}').format(user.replace('_', r'\_'), user)
+        return tt('/u/{1}').format(user.replace('_', r'\_'), user)
 
     @staticmethod
     def _submit(func, *args, **kwargs):
