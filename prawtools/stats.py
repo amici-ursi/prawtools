@@ -89,7 +89,7 @@ class SubRedditStats(object):
 
     def __init__(self, subreddit, site, verbosity, distinguished):
         """Initialize the SubRedditStats instance with config options."""
-        self.reddit = Reddit(str(self), site, disable_update_check=True)
+        self.reddit = Reddit(str(self), site, disable_update_check=True, api_request_delay=1)
         self.subreddit = self.reddit.get_subreddit(subreddit)
         self.verbosity = verbosity
         self.distinguished = distinguished
